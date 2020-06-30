@@ -1,12 +1,12 @@
 import React from 'react';
-import './Footer.scss'
+import './Main.scss'
 
 const ButtonOrder = ({ children, ...rest }) => {
     return <button {...rest}>{children}</button>;
   };
   
 const Spinner = () => (
-    <img src="https://media1.tenor.com/images/85d269dc9595a7bcf87fd0fa4039dd9f/tenor.gif?itemid=8647480" class="zoom2" height="30" width = '30'/>
+    <img src="https://media1.tenor.com/images/85d269dc9595a7bcf87fd0fa4039dd9f/tenor.gif?itemid=8647480" alt="Hello" class="zoom2" height="30" width = '30'/>
   )
 
 
@@ -98,3 +98,5 @@ class Main extends React.Component {
         )
     }
 }
+
+export default Main;
