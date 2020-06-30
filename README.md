@@ -13,7 +13,7 @@
 <!-- * [front-end application](https://abdallah-lab-00.herokuapp.com/)  -->
 ### Deployment:
 * [GitHub Page](https://abdallah-401-advanced-javascript.github.io/resty/)
-* [Netlify](https://github.com/Abdallah-401-advanced-javascript/resty/pull/2)
+* [Netlify](https://stoic-jennings-e5b7bc.netlify.app/)
 
 ### Documentation
 <!-- * [jsdoc](https://abdallah-lab-00.herokuapp.com/docs/) -->
