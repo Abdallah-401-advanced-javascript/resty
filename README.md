@@ -1,6 +1,6 @@
-# LAB - 27
+# LAB - 28
 <!-- ## Project: Project Name Here -->
-## React Testing and Deployment
+## Props and State
 
 ### Author: Abdallah Obaid
 
@@ -23,7 +23,7 @@
 <!-- #### `events.js`. -->
 
 ##### Exported Values and Methods
-
+`<Main/>` class, `<Footer/>` method,`<Header/>` method,`<Results/>` class
 <!-- ###### `events.js`
 This is to require the event and use it in the other files. -->
 
@@ -79,4 +79,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 #### UML
 
-![UML Diagram](whiteboardclass27.jpg)
+![UML Diagram](whiteboardclass28.jpg)

@@ -14,7 +14,11 @@
     "sourceType": "module",
     "ecmaVersion": 2018,
     "ecmaFeatures": {
-      "jsx": true  }
+      "jsx": true,
+      "arrowFunctions":true,
+      "classes":true,
+      "spread":true
+      }
   },
   "rules": {
     "no-console": "off",
@@ -23,5 +27,6 @@
     "comma-dangle": ["error", "always-multiline"],
     "semi": [ "error", "always" ],
     "no-unused-vars": [1, {"vars": "local", "args": "none"}]
-  }
+  },
+  "parser": "babel-eslint"
 }
