@@ -1,4 +1,4 @@
-///* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Header from './components/header/header';
 import Main from './components/form/form';

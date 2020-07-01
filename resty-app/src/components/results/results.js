@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { isSpreadAssignment } from 'typescript';
-
+import ReactJson from 'react-json-view';
+import './results.scss';
 const Results = (props) => {
     
   return (
-    <div>
+    <div id="textarea">
       <div>Count: {props.count}</div>
       {
         <div><pre>headers:{ JSON.stringify(props.headers, null, 2) }</pre></div>
@@ -13,8 +14,6 @@ const Results = (props) => {
       {
         <div><pre>body: { JSON.stringify(props.results, null, 2) }</pre></div>
       }
-        
-
     </div>
   );
 };

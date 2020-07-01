@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import './Main.scss';
 
@@ -112,9 +113,9 @@ class Main extends React.Component {
                 <span>DELETE</span>
               </label>
             </div>
-            <div>
+            {/* <div>
               <textarea id="textarea" name="textarea" rows="10" cols="50"value={this.state.methodurl}></textarea>
-            </div>
+            </div> */}
           </div>
         </main>
       );
