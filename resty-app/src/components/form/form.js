@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './Main.scss';
+import superagent from 'superagent';
 
 const ButtonOrder = ({ children, ...rest }) => {
   return <button {...rest}>{children}</button>;
@@ -58,18 +59,21 @@ class Main extends React.Component {
       // fetch data form API 
       e.preventDefault();
       let raw = await fetch(this.state.url); // star wars API
+      
       let data = await raw.json();
-      console.log(raw.headers);
-      let headers=raw.headers;
+      let headers = await superagent.get(this.state.url);
+      console.log(`raw.headers`,raw.headers);
+      console.log(`headers`,headers);
+      // let headers=raw.headers;
       if (data.count){
         let Count = data.count;
-        this.props.handler(Count, data,headers);
+        this.props.handler(Count, data,headers.headers);
 
       }
       else
       {
         let Count=Object.keys(data).length;
-        this.props.handler(Count, data,headers);
+        this.props.handler(Count, data,headers.headers);
 
       }
     }
