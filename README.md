@@ -1,19 +1,19 @@
-# LAB - 28
+# LAB - 29
 <!-- ## Project: Project Name Here -->
-## Props and State
+## Routing and Component Composition
 
 ### Author: Abdallah Obaid
 
 ### Links and Resources
 
-* [submission PR](https://github.com/Abdallah-401-advanced-javascript/resty/pull/2)
+* [submission PR](https://github.com/Abdallah-401-advanced-javascript/resty/pull/5)
 <!-- * [travis](https://github.com/Abdallah-401-advanced-javascript/caps/pull/2/checks?check_run_id=775094621)ز -->
 <!-- * [ci/cd](https://github.com/Abdallah-401-advanced-javascript/caps/pull/2/checks?check_run_id=775094661) -->
 <!-- - [back-end server url](http://xyz.com) (when applicable) -->
 <!-- * [front-end application](https://abdallah-lab-00.herokuapp.com/)  -->
 ### Deployment:
 * [GitHub Page](https://abdallah-401-advanced-javascript.github.io/resty/)
-* [Netlify](https://stoic-jennings-e5b7bc.netlify.app/)
+<!-- * [Netlify](https://stoic-jennings-e5b7bc.netlify.app/) -->
 
 ### Documentation
 <!-- * [jsdoc](https://abdallah-lab-00.herokuapp.com/docs/) -->
@@ -23,7 +23,7 @@
 <!-- #### `events.js`. -->
 
 ##### Exported Values and Methods
-`<Main/>` class, `<Footer/>` method,`<Header/>` method,`<Results/>` class
+`<Main/>` class, `<Footer/>` method,`<Header/>` method,`<Results/>` class, `<Routes/>` class
 <!-- ###### `events.js`
 This is to require the event and use it in the other files. -->
 
@@ -79,4 +79,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 #### UML
 
-![UML Diagram](whiteboardclass28.jpg)
+![UML Diagram](whiteboardclass29.jpg)
