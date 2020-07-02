@@ -7,6 +7,7 @@ const Results = (props) => {
   return (
     <div id="textarea">
       <div>Count: {props.count}</div>
+      <img src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" className={`loading-${props.loading}`} alt="thank you"/>
       {/* Render json without using react-json-view module  */}
       {/* {
         <div><pre>headers:{ JSON.stringify(props.headers, null, 2) }</pre></div>

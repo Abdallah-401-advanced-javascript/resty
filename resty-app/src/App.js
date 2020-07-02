@@ -18,9 +18,15 @@ class App extends React.Component {
       results: [],
       headers:[],
       item:[],
+      loading:false,
     };
   }
-
+  
+// Make a spinner
+toggleLoading = () => {
+  console.log('this.state.loading: ',this.state.loading);
+  this.setState({ loading: !this.state.loading });
+}
 // method to be passed to form
 handleForm = (count, results,headers,item) => {
   this.setState({count, results,headers,item});
@@ -37,8 +43,8 @@ render() {
 
       {/* <Main /> */}
       <Footer />
-      <Main handler={this.handleForm} />
-      <Results count={this.state.count} results={this.state.results} headers={this.state.headers} />
+      <Main handler={this.handleForm} toggleLoading={this.toggleLoading} />
+      <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
     </React.Fragment>
   );
 }

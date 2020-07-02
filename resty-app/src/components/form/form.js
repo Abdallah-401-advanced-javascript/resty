@@ -80,6 +80,7 @@ class Main extends React.Component {
       if (this.state.method != 'GET'){
         requestOptions.body = this.state.body;
       }
+      this.props.toggleLoading();
       let data =await fetch(this.state.url, requestOptions)
         .then(response => response.json());
       let headers = await superagent.get(this.state.url);
@@ -108,6 +109,7 @@ class Main extends React.Component {
         this.props.handler(Count, data,headers.headers);
 
       }
+      this.props.toggleLoading();
     }
 
 
