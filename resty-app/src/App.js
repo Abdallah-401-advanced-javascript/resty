@@ -1,9 +1,12 @@
-///* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Header from './components/header/header';
 import Main from './components/form/form';
 import Footer from './components/footer/footer';
 import Results from './components/results/results';
+import Routes from './components/routes';
+import { Link } from 'react-router-dom';
+
 
 //class App
 class App extends React.Component {
@@ -14,12 +17,19 @@ class App extends React.Component {
       count: 0,
       results: [],
       headers:[],
+      item:[],
+      loading:false,
     };
   }
-
+  
+// Make a spinner
+toggleLoading = () => {
+  console.log('this.state.loading: ',this.state.loading);
+  this.setState({ loading: !this.state.loading });
+}
 // method to be passed to form
-handleForm = (count, results,headers) => {
-  this.setState({count, results,headers});
+handleForm = (count, results,headers,item) => {
+  this.setState({count, results,headers,item});
   // {count: count , results:results}
 }
 
@@ -27,11 +37,14 @@ render() {
   return (
     // I will add Header, Main, Footer
     <React.Fragment>
+      {/* <link >history</link> */}
       <Header />
+      <Routes item={this.state.item}/>
+
       {/* <Main /> */}
       <Footer />
-      <Main handler={this.handleForm} />
-      <Results count={this.state.count} results={this.state.results} headers={this.state.headers} />
+      <Main handler={this.handleForm} toggleLoading={this.toggleLoading} />
+      <Results loading={this.state.loading} count={this.state.count} results={this.state.results} headers={this.state.headers} />
     </React.Fragment>
   );
 }

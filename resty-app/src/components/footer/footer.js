@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import './Footer.scss';
 const Footer = () => <footer><p>&copy;2020 Code Fellows</p></footer>;

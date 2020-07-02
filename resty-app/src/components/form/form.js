@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import './Main.scss';
-
+import superagent from 'superagent';
+let item =[];
 const ButtonOrder = ({ children, ...rest }) => {
   return <button {...rest}>{children}</button>;
 };
@@ -17,6 +19,9 @@ class Main extends React.Component {
     this.state = {
       method: 'GET',
       url:'https://swapi.dev/api/people/',
+      body:{},
+      item:[],
+      bofyJson:{},
       methodurl : 'GET https://swapi.dev/api/people/',
       Count:0,
       Results:[],
@@ -53,24 +58,58 @@ class Main extends React.Component {
       let method = e.target.value;
       this.setState({method:method,firstSelect:false}); // re-render 
     }
+    handleBody = e => {       
+      let body = e.target.value;
+      this.setState({body:body}); // re-render 
+    }
     handleSubmit = async e => {
       // fetch data form API 
       e.preventDefault();
-      let raw = await fetch(this.state.url); // star wars API
-      let data = await raw.json();
-      console.log(raw.headers);
-      let headers=raw.headers;
+      
+      let item = localStorage.getItem('item') || '[]';
+      item = JSON.parse(item);
+      item.push({method:this.state.method,url:this.state.url,body:this.state.body});
+      localStorage.setItem('item',JSON.stringify(item));
+      // localStorage.setItem('url',this.state.url);
+      // localStorage.setItem('method',this.state.method);
+      // localStorage.setItem('body',this.state.body);
+      const requestOptions = {
+        method: this.state.method,
+        headers: { 'Content-Type': 'application/json' },
+      };
+      if (this.state.method != 'GET'){
+        requestOptions.body = this.state.body;
+      }
+      this.props.toggleLoading();
+      let data =await fetch(this.state.url, requestOptions)
+        .then(response => response.json());
+      let headers = await superagent.get(this.state.url);
+      console.log(`raw.headers`,data.headers);
+      console.log(`headers`,headers);
+      console.log(data);
+      let historyData = localStorage.getItem('historyData') || '[]';
+      historyData = JSON.parse(historyData);
+      historyData.push(data);
+      localStorage.setItem('historyData',JSON.stringify(historyData));
+
+      let historyHeaders = localStorage.getItem('historyHeaders') || '[]';
+      historyHeaders = JSON.parse(historyHeaders);
+      historyHeaders.push(headers.headers);
+      localStorage.setItem('historyHeaders',JSON.stringify(historyHeaders));
+
+      // let headers=raw.headers;
       if (data.count){
         let Count = data.count;
-        this.props.handler(Count, data,headers);
+        this.props.handler(Count, data,headers.headers);
 
       }
       else
       {
         let Count=Object.keys(data).length;
-        this.props.handler(Count, data,headers);
+        this.props.handler(Count, data,headers.headers);
 
       }
+      this.props.toggleLoading();
     }
 
 
@@ -79,6 +118,7 @@ class Main extends React.Component {
         <main>
           <div>
             <label>URL: <input onChange={this.handleUrl} value = {this.state.url}/></label>
+            <label>Body: <input onChange={this.handleBody} value = {this.state.body}/></label>
             <ButtonOrder type="button" disabled={this.state.isPlacingOrder} onClick={this.handleSubmit}>
               {this.state.isPlacingOrder ? <Spinner /> : 'Go'}
             </ButtonOrder>
@@ -112,9 +152,9 @@ class Main extends React.Component {
                 <span>DELETE</span>
               </label>
             </div>
-            <div>
+            {/* <div>
               <textarea id="textarea" name="textarea" rows="10" cols="50"value={this.state.methodurl}></textarea>
-            </div>
+            </div> */}
           </div>
         </main>
       );

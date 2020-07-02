@@ -1,0 +1,23 @@
+.list {
+    list-style-type: lower-roman;
+    margin:0;
+    padding: 1em;
+
+    li {
+        font-weight: bolder;
+        margin-bottom: .5em;
+        text-transform: uppercase;
+    }
+    
+    .textarea{
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: 100px;
+        margin-right: 100px;
+        border-style: solid;
+        border: thin black 1px;
+        background-color: #f5f5f5;
+        display: none;
+    }
+}
