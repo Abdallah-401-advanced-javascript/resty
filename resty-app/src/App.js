@@ -4,6 +4,9 @@ import Header from './components/header/header';
 import Main from './components/form/form';
 import Footer from './components/footer/footer';
 import Results from './components/results/results';
+import Routes from './components/routes';
+import { Link } from 'react-router-dom';
+
 
 //class App
 class App extends React.Component {
@@ -14,12 +17,13 @@ class App extends React.Component {
       count: 0,
       results: [],
       headers:[],
+      item:[],
     };
   }
 
 // method to be passed to form
-handleForm = (count, results,headers) => {
-  this.setState({count, results,headers});
+handleForm = (count, results,headers,item) => {
+  this.setState({count, results,headers,item});
   // {count: count , results:results}
 }
 
@@ -27,7 +31,10 @@ render() {
   return (
     // I will add Header, Main, Footer
     <React.Fragment>
+      {/* <link >history</link> */}
       <Header />
+      <Routes item={this.state.item}/>
+
       {/* <Main /> */}
       <Footer />
       <Main handler={this.handleForm} />

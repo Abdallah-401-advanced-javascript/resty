@@ -16,11 +16,11 @@ const Results = (props) => {
         <div><pre>body: { JSON.stringify(props.results, null, 2) }</pre></div>
       } */}
       {/* Render json using react-json-view module  */}
-      {
+      Header:{
         <ReactJson src={props.headers} />
       }
 
-      {
+      Results:{
         <ReactJson src={props.results} />
       }
     </div>
