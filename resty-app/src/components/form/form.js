@@ -30,6 +30,17 @@ class Main extends React.Component {
     };
   }
 
+  componentWillMount(){
+    if(!this.state.firstSelect){
+      this.setState(
+        {
+          url: this.props.searchItemUrl || 'https://swapi.dev/api/people/',
+          method: this.props.searchItemMethod || 'GET',
+          body : this.props.searchItemBody || {},
+        });
+      this.handleSubmit();
+    }
+  }
     handleClick = e => {
       e.preventDefault();
       this.setState(
@@ -58,21 +69,18 @@ class Main extends React.Component {
       let method = e.target.value;
       this.setState({method:method,firstSelect:false}); // re-render 
     }
+
+    
     handleBody = e => {       
       let body = e.target.value;
       this.setState({body:body}); // re-render 
     }
+
+
     handleSubmit = async e => {
       // fetch data form API 
       e.preventDefault();
       
-      let item = localStorage.getItem('item') || '[]';
-      item = JSON.parse(item);
-      item.push({method:this.state.method,url:this.state.url,body:this.state.body});
-      localStorage.setItem('item',JSON.stringify(item));
-      // localStorage.setItem('url',this.state.url);
-      // localStorage.setItem('method',this.state.method);
-      // localStorage.setItem('body',this.state.body);
       const requestOptions = {
         method: this.state.method,
         headers: { 'Content-Type': 'application/json' },
@@ -87,16 +95,11 @@ class Main extends React.Component {
       console.log(`raw.headers`,data.headers);
       console.log(`headers`,headers);
       console.log(data);
-      let historyData = localStorage.getItem('historyData') || '[]';
-      historyData = JSON.parse(historyData);
-      historyData.push(data);
-      localStorage.setItem('historyData',JSON.stringify(historyData));
 
-      let historyHeaders = localStorage.getItem('historyHeaders') || '[]';
-      historyHeaders = JSON.parse(historyHeaders);
-      historyHeaders.push(headers.headers);
-      localStorage.setItem('historyHeaders',JSON.stringify(historyHeaders));
-
+      let item = localStorage.getItem('item') || '[]';
+      item = JSON.parse(item);
+      item.push({method:this.state.method,url:this.state.url,body:this.state.body,historyData:data,historyHeaders:headers.headers });
+      localStorage.setItem('item',JSON.stringify(item));
       // let headers=raw.headers;
       if (data.count){
         let Count = data.count;
