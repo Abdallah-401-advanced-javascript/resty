@@ -1,12 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ReactJson from 'react-json-view';
-import {Route} from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 // import Home from './home.js';
-import App from './../../App.js';
 import './history.scss';
 
 class History extends React.Component {
@@ -23,39 +20,40 @@ class History extends React.Component {
       e.target.value = 'Show Delails'; 
     }
   }
-  NewSearch = e => {       
+  newSearch = e => {     
+    e.preventDefault();
+    let i = Number(e.target.name) ;
+    let searchItemUrl = this.props.all[i].url;
+    let searchItemMethod = this.props.all[i].method;
+    let searchItemBody = this.props.all[i].body;
 
+    this.props.handler(searchItemUrl, searchItemMethod,searchItemBody);
   }
+
   render() {
     return (
-      <ul className="list">
-        {console.log(this.props.children[0], 'child')}
-
-        {this.props.children[0].map((item, index) => (
-          <li key={index}>
-            {item.method+' '+item.url}
-            <button name={index} onClick ={this.ShowDelails}>Show Delails</button>
-            <button name={index} onClick ={this.NewSearch}>
-              New Search
-              {/* <Redirect
-                to={{
-                  pathname: '/',
-                  state: {url: item.url,method: item.method },
-                }}
-              /> */}
-            </button>
-            <div class="textarea" id = {index} >
-              Header:{
-                <ReactJson src={this.props.children[1][index]} />
-              }
+      <span>
+        <ul className="list">
+          {this.props.all.map((item, index) => (
+            <li key={index}>
+              {item.method+' '+ item.url}
+              <button name={index} onClick ={this.ShowDelails}>Show Delails</button>
+              <button name={index} onClick ={this.newSearch}>
+                <Link to="/home">New Search</Link>
+              </button>
+              <div class="textarea" id = {index} >
+              Header:{               
+                  <ReactJson src={item.historyData} />
+                }
 
               Results:{
-                <ReactJson src={this.props.children[2][index]} />
-              }
-            </div>
-          </li>
-        ))}
-      </ul>
+                  <ReactJson src={item.historyData} />
+                }
+              </div>
+            </li>
+          ))}
+        </ul>
+      </span>
     );
   }
 }

@@ -1,14 +1,16 @@
 .list {
     list-style-type: lower-roman;
-    margin:0;
     padding: 1em;
 
     li {
         font-weight: bolder;
         margin-bottom: .5em;
         text-transform: uppercase;
+        margin:10px;
     }
-    
+    button{
+        margin: 5px;
+    }
     .textarea{
         padding-top: 10px;
         padding-left: 10px;

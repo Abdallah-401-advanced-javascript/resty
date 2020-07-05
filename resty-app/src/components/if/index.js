@@ -1,14 +1,14 @@
 import React from 'react';
 
 const render = (condition = false , children = null) => {
-    return condition ? children : null;
+  return condition ? children : null;
 };
 
 // IfRenderer component
 export const IfRenderer = props => 
-    React.Children.map(props.children, child =>
-        React.cloneElement(child, {condition: props.condition})
-    ); 
+  React.Children.map(props.children, child =>
+    React.cloneElement(child, {condition: props.condition}),
+  ); 
 
 // export const IfRenderer = props => {
 //     return  React.Children.map(props.children, child => {
