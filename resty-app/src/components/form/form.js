@@ -85,7 +85,7 @@ class Main extends React.Component {
         method: this.state.method,
         headers: { 'Content-Type': 'application/json' },
       };
-      if (this.state.method != 'GET'){
+      if (this.state.method !== 'GET'){
         requestOptions.body = this.state.body;
       }
       this.props.toggleLoading();
